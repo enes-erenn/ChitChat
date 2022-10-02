@@ -1,0 +1,67 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper {
+    padding: 1rem 2rem;
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      input {
+        padding: 1rem;
+        border: none;
+        border-bottom: 1px solid lightgray;
+        outline-color: gray;
+        &::placeholder {
+          color: rgb(175, 175, 175);
+        }
+      }
+
+      button {
+        background: #7b96ec;
+        color: white;
+        padding: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+      }
+
+      .file {
+        display: none;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+      }
+
+      .brand-name {
+        color: #5d5b8d;
+        font-weight: bold;
+        font-size: 24px;
+      }
+
+      .header {
+        font-weight: bold;
+      }
+    }
+    .have-account {
+      color: #5d5b8d;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+}

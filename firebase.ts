@@ -5,7 +5,7 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: `${process.env.FIREBASE_API_KEY}`,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "chitchat-4cf1a.firebaseapp.com",
   projectId: "chitchat-4cf1a",
   storageBucket: "chitchat-4cf1a.appspot.com",

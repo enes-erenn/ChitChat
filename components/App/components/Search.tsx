@@ -12,15 +12,15 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
+import { AuthContext } from "../../../context/AuthContext";
 import styles from "../style.module.scss";
-import { AuthContext } from "../../../context/Auth";
 
 const Search = () => {
+  const { currentUser } = useContext(AuthContext);
   const [userName, setUserName] = useState("");
   const [user, setUser] = useState(
     {} || { uid: "", displayName: "", photoURL: "" }
   );
-  const { currentUser } = useContext(AuthContext);
 
   const handleSearch = async () => {
     const q = query(
@@ -40,17 +40,17 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
-    let id: String = "";
-    let photoURL: String = "";
-    let displayName: String = "";
+    let uid: string = "";
+    let photoURL: string = "";
+    let displayName: string = "";
     if (user.uid && user.displayName && user.photoURL) {
-      id = user.uid;
+      uid = user.uid;
       photoURL = user.photoURL;
       displayName = user.displayName;
     }
     //check whether the group(chats in firestore) exists, if not create
     const combinedId =
-      currentUser.uid > id ? currentUser.uid + id : id + currentUser.uid;
+      currentUser.uid > uid ? currentUser.uid + uid : uid + currentUser.uid;
     try {
       const res = await getDoc(doc(db, "chats", combinedId));
 
@@ -60,9 +60,18 @@ const Search = () => {
 
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [combinedId + ".userInfo"]: {
-            uid: user.uid,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
+            uid,
+            displayName,
+            photoURL,
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+
+        await updateDoc(doc(db, "userChats", uid), {
+          [combinedId + ".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
           },
           [combinedId + ".date"]: serverTimestamp(),
         });
@@ -87,19 +96,18 @@ const Search = () => {
           placeholder="Search for a user"
           onKeyDown={handleKey}
           onChange={(e) => setUserName(e.target.value)}
+          value={userName}
         />
       </div>
-      {user && (
+      {Object.entries(user).length > 0 && (
         <div className={styles.userChat} onClick={handleSelect}>
-          <div style={{ width: "100%", height: "100%", position: "relative" }}>
-            <Image
-              src={""}
-              alt="User"
-              objectFit="contain"
-              width="30px"
-              height="30px"
-            />
-          </div>
+          <Image
+            src={user.photoURL || ""}
+            alt="User"
+            objectFit="contain"
+            width="48px"
+            height="48px"
+          />
           <div className={styles.userChatInfo}>
             <span>{user.displayName}</span>
           </div>

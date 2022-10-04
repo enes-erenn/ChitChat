@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { signOut } from "firebase/auth";
 import styles from "../style.module.scss";
 import { auth } from "../../../firebase";
-import { AuthContext } from "../../../context/Auth";
+import { AuthContext } from "../../../context/AuthContext";
 import Image from "next/image";
+import Logout from "../../../assets/icons/logout.png";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -12,17 +13,25 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <span className={styles.logo}>ChitChat</span>
       <div className={styles.user}>
-        <div style={{ width: "100%", height: "100%", position: "relative" }}>
+        <div className={styles.imageLayout}>
           <Image
             src={currentUser.photoURL || ""}
             alt="User"
             objectFit="contain"
-            width="50px"
-            height="50px"
+            width="36px"
+            height="36px"
           />
         </div>
         <span>{currentUser.displayName}</span>
-        <button onClick={() => signOut(auth)}>Logout</button>
+        <button onClick={() => signOut(auth)}>
+          <Image
+            src={Logout}
+            width="20px"
+            height="20px"
+            alt="Logout"
+            className={styles.asd}
+          />
+        </button>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import App from "../components/App/App";
-import { AuthContext } from "../context/Auth";
+import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
   const router = useRouter();
@@ -38,7 +38,7 @@ const Home = () => {
   if (isLoading) {
     return (
       <>
-        <p>Loadning...</p>
+        <p>Loading...</p>
       </>
     );
   }

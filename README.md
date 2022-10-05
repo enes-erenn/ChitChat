@@ -1,5 +1,5 @@
 
-# Realtime Private Chat Application
+# Realtime Chat Application
 
 <img width="300" align="center" src="https://raw.githubusercontent.com/enes-erenn/images/main/ChitChat.png" />
 

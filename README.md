@@ -1,6 +1,8 @@
 
 # Realtime Private Chat Application
 
+<img width="300" align="center" src="https://raw.githubusercontent.com/enes-erenn/images/main/ChitChat.png" />
+
 ## Getting Started
 
 Make sure you have Node.js installed.

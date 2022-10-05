@@ -23,7 +23,12 @@ const Message: React.FC<Props> = ({ message }) => {
   }, [message]);
 
   return (
-    <div className={`${styles.message} ${styles.owner}`} ref={ref}>
+    <div
+      className={`${styles.message}  ${
+        message.senderId === currentUser.uid && styles.owner
+      }`}
+      ref={ref}
+    >
       <div className={styles.messageInfo}>
         <Image
           src={

@@ -97,9 +97,7 @@ const RegisterComponent = () => {
       <div className={styles.wrapper}>
         <h2 className={styles["brand-name"]}>ChitChat</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div style={{ width: "100%", height: "3rem", position: "relative" }}>
-            <Image src="" alt="Logo" className={styles["brand-logo"]} />
-          </div>
+         
           <h3 className={styles.header}>Register</h3>
           <p className={styles["have-account"]}>
             Have an account? <Link href="/login">Login</Link>

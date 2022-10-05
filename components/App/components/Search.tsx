@@ -76,7 +76,7 @@ const Search = () => {
           [combinedId + ".date"]: serverTimestamp(),
         });
 
-        setUser({ displayName: "", uid: "", photoURL: "" });
+        setUser({});
         setUserName("");
       }
     } catch (err) {

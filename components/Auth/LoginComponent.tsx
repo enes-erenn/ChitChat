@@ -50,9 +50,6 @@ const LoginComponent = () => {
       <div className={styles.wrapper}>
         <h2 className={styles["brand-name"]}>ChitChat</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div style={{ width: "100%", height: "3rem", position: "relative" }}>
-            <Image src="" alt="" className={styles["brand-logo"]} />
-          </div>
           <h3 className={styles.header}>Login</h3>
           <p className={styles["have-account"]}>
             Don&apos;t Have an account? <Link href="/register">Sign up</Link>

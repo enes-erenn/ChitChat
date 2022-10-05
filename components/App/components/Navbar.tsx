@@ -18,8 +18,8 @@ const Navbar = () => {
             src={currentUser.photoURL || ""}
             alt="User"
             objectFit="contain"
-            width="36px"
-            height="36px"
+            width="32px"
+            height="32px"
           />
         </div>
         <span>{currentUser.displayName}</span>

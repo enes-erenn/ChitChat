@@ -7,7 +7,7 @@ import { auth, db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import styles from "./style.module.scss";
-import Avatar from "../../assets/icons/Avatar.png";
+import Avatar from "../../assets/icons/avatar.png";
 
 const RegisterComponent = () => {
   const router = useRouter();

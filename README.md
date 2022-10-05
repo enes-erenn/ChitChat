@@ -1,6 +1,8 @@
 
 # Realtime Chat Application
 
+I roughly followed this [course](https://www.youtube.com/watch?v=k4mjF4sPITE) to create this app but I changed some parts according to my needs.
+
 <img width="300" align="center" src="https://raw.githubusercontent.com/enes-erenn/images/main/ChitChat.png" />
 
 ## Getting Started

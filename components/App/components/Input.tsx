@@ -1,3 +1,4 @@
+import React, { useContext, useState } from "react";
 import {
   arrayUnion,
   doc,
@@ -5,14 +6,12 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import React, { useContext, useState } from "react";
 import { db, storage } from "../../../firebase";
-import styles from "../style.module.scss";
 import { v4 as uuid } from "uuid";
 import { AuthContext } from "../../../context/AuthContext";
 import { ChatContext } from "../../../context/ChatContext";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { updateProfile } from "firebase/auth";
+import styles from "../style.module.scss";
 import Attach from "../../../assets/icons/Attach.png";
 import AddImage from "../../../assets/icons/AddImage.png";
 import Image from "next/image";
@@ -76,8 +75,15 @@ const Input = () => {
       <input
         type="text"
         placeholder="Type something.."
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setText(e.target.value)
+        }
         value={text}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.code === "Enter") {
+            return handleSend();
+          }
+        }}
       />
       <div className={styles.send}>
         <Image

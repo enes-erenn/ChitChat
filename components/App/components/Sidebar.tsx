@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
-import styles from "../style.module.scss";
 import Chats from "./Chats";
+import styles from "../style.module.scss";
 
 const Sidebar = () => {
   return (

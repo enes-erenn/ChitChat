@@ -1,6 +1,6 @@
-import { doc, onSnapshot } from "firebase/firestore";
-import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
+import Image from "next/image";
+import { doc, onSnapshot } from "firebase/firestore";
 import { AuthContext } from "../../../context/AuthContext";
 import { ChatContext } from "../../../context/ChatContext";
 import { db } from "../../../firebase";
@@ -46,7 +46,7 @@ const Chats = () => {
 
     currentUser.uid && getChats();
   }, [currentUser.uid]);
-  console.log(chats);
+
   const handleSelect = (user: Object) => {
     dispatch({ type: "CHANGE_USER", payload: user });
   };

@@ -1,10 +1,9 @@
-import { doc, onSnapshot } from "firebase/firestore";
-import mitt from "next/dist/shared/lib/mitt";
 import React, { useContext, useEffect, useState } from "react";
+import { doc, onSnapshot } from "firebase/firestore";
 import { ChatContext } from "../../../context/ChatContext";
 import { db } from "../../../firebase";
-import styles from "../style.module.scss";
 import Message from "./Message";
+import styles from "../style.module.scss";
 
 const Messages = () => {
   const { data } = useContext(ChatContext);

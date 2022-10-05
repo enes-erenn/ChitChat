@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -50,25 +49,28 @@ const LoginComponent = () => {
       <div className={styles.wrapper}>
         <h2 className={styles["brand-name"]}>ChitChat</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <h3 className={styles.header}>Login</h3>
-          <p className={styles["have-account"]}>
-            Don&apos;t Have an account? <Link href="/register">Sign up</Link>
-          </p>
-
-          <input
-            type="email"
-            placeholder="Email"
-            value={user.email}
-            name="email"
-            onChange={handleChange}
-          ></input>
-          <input
-            type="password"
-            placeholder="Password"
-            value={user.password}
-            name="password"
-            onChange={handleChange}
-          ></input>
+          <div className={styles.headerWrapper}>
+            <h3 className={styles.header}>Login</h3>
+            <p className={styles["have-account"]}>
+              Don&apos;t Have an account? <Link href="/register">Sign up</Link>
+            </p>
+          </div>
+          <div className={styles.inputWrapper}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={user.email}
+              name="email"
+              onChange={handleChange}
+            ></input>
+            <input
+              type="password"
+              placeholder="Password"
+              value={user.password}
+              name="password"
+              onChange={handleChange}
+            ></input>
+          </div>
           <button>Login</button>
         </form>
         {error && <p>Something went wrong!</p>}

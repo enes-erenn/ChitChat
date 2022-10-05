@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React, { useContext, useEffect, useRef } from "react";
+import Image from "next/image";
 import { AuthContext } from "../../../context/AuthContext";
 import { ChatContext } from "../../../context/ChatContext";
 import styles from "../style.module.scss";
@@ -40,11 +40,11 @@ const Message: React.FC<Props> = ({ message }) => {
           width="64px"
           height="64px"
         />
-        <span>just now</span>
       </div>
       <div className={styles.messageContent}>
-        <p>{message.text}</p>
-        {message.img && (
+        {message.text ? (
+          <p>{message.text}</p>
+        ) : (
           <Image
             src={message.img || ""}
             alt="Image"

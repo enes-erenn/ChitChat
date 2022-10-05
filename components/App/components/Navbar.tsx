@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
+import Image from "next/image";
 import { signOut } from "firebase/auth";
-import styles from "../style.module.scss";
 import { auth } from "../../../firebase";
 import { AuthContext } from "../../../context/AuthContext";
-import Image from "next/image";
 import Logout from "../../../assets/icons/logout.png";
+import styles from "../style.module.scss";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);

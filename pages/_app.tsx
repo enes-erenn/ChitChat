@@ -1,15 +1,21 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { AuthContextProvider } from "../context/AuthContext.js";
 import { ChatContextProvider } from "../context/ChatContext.js";
+import Head from "next/head";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AuthContextProvider>
-      <ChatContextProvider>
-        <Component {...pageProps} />
-      </ChatContextProvider>
-    </AuthContextProvider>
+    <>
+      <Head>
+        <title>ChitChat - Realtime Chatting App</title>
+      </Head>
+      <AuthContextProvider>
+        <ChatContextProvider>
+          <Component {...pageProps} />
+        </ChatContextProvider>
+      </AuthContextProvider>
+    </>
   );
 }
 

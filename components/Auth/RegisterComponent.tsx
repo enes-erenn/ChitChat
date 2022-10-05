@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-import { useRouter } from "next/router";
 import styles from "./style.module.scss";
+import Avatar from "../../assets/icons/Avatar.png";
 
 const RegisterComponent = () => {
   const router = useRouter();
@@ -97,25 +98,31 @@ const RegisterComponent = () => {
       <div className={styles.wrapper}>
         <h2 className={styles["brand-name"]}>ChitChat</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
-         
-          <h3 className={styles.header}>Register</h3>
-          <p className={styles["have-account"]}>
-            Have an account? <Link href="/login">Login</Link>
-          </p>
-          <input
-            type="text"
-            placeholder="First Name"
-            value={user.firstName}
-            name="firstName"
-            onChange={handleChange}
-          ></input>
-          <input
-            type="text"
-            placeholder="Last Name"
-            value={user.lastName}
-            name="lastName"
-            onChange={handleChange}
-          ></input>
+          <div className={styles.headerWrapper}>
+            <h3 className={styles.header}>Register</h3>
+            <p className={styles["have-account"]}>
+              Have an account?{" "}
+              <Link href="/login" className={styles.link}>
+                Login
+              </Link>
+            </p>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="First Name"
+              value={user.firstName}
+              name="firstName"
+              onChange={handleChange}
+            ></input>
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={user.lastName}
+              name="lastName"
+              onChange={handleChange}
+            ></input>
+          </div>
           <input
             type="email"
             placeholder="Email"
@@ -123,20 +130,22 @@ const RegisterComponent = () => {
             name="email"
             onChange={handleChange}
           ></input>
-          <input
-            type="password"
-            placeholder="Password"
-            value={user.password}
-            name="password"
-            onChange={handleChange}
-          ></input>
-          <input
-            type="password"
-            placeholder="Password Confirm"
-            value={user.passwordConfirm}
-            name="passwordConfirm"
-            onChange={handleChange}
-          ></input>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={user.password}
+              name="password"
+              onChange={handleChange}
+            ></input>
+            <input
+              type="password"
+              placeholder="Password Confirm"
+              value={user.passwordConfirm}
+              name="passwordConfirm"
+              onChange={handleChange}
+            ></input>
+          </div>
           <input
             type="file"
             id="file"
@@ -144,7 +153,18 @@ const RegisterComponent = () => {
             name="file"
             onChange={handleChange}
           />
-          <label htmlFor="file">Add an Avatar</label>
+          <div className={styles.addFile}>
+            <div style={{ position: "relative" }}>
+              <Image
+                src={Avatar}
+                width="36px"
+                height="36px"
+                alt="Add Image"
+                objectFit="contain"
+              />
+            </div>
+            <label htmlFor="file">Add an Avatar</label>
+          </div>
           <button>Sign up</button>
         </form>
         {error && <p>Something went wrong!</p>}
